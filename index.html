@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Código de Normas – Sicoob CrediEmbrapa</title>
+    <style>
+        :root {
+            --turquesa: #00AE9D;
+            --verde-escuro: #003641;
+            --branco: #FFFFFF;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--branco) url('https://github.com/jessicacarolinesdias/Sicoob-CrediEmbrapa/raw/3c9e8e6cdc11fd54aa55df87639f2de7ded9e3e0/padroes-01.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--verde-escuro);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: rgba(255,255,255,0.97);
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 32px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: var(--turquesa);
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+            color: var(--verde-escuro);
+        }
+        select,
+input[type="text"] {
+  width: 100%;
+  height: 44px;              /* força mesma altura */
+  box-sizing: border-box;    /* garante que padding/borda não alterem altura */
+  padding: 0 12px;           /* só horizontal */
+  margin-top: 6px;
+  border: 1px solid var(--turquesa);
+  border-radius: 6px;
+  font-size: 16px;
+  background: var(--branco);
+  color: var(--verde-escuro);
+  line-height: 44px;         /* texto centralizado verticalmente */
+}
+        input[type="text"]:focus, select:focus {
+            outline: 2px solid var(--turquesa);
+        }
+        .output {
+            margin-top: 28px;
+            padding: 16px;
+            background: var(--turquesa);
+            color: var(--branco);
+            font-size: 1.3em;
+            text-align: center;
+            border-radius: 6px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            user-select: all;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 24px auto;
+            max-width: 180px;
+        }
+        .readonly-field {
+            background: #f4f4f4;
+            color: var(--verde-escuro);
+            border: 1px solid #ccc;
+        }
+        .info-section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 18px 18px 8px 18px;
+            margin: 32px auto 0 auto;
+            max-width: 900px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            font-size: 0.98em;
+            transition: max-height 0.4s, padding 0.4s;
+            overflow: hidden;
+        }
+        .info-section.collapsed {
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .info-toggle-btn {
+            display: block;
+            margin: 0 auto 8px auto;
+            background: var(--turquesa);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 18px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .info-toggle-btn:hover {
+            background: var(--verde-escuro);
+        }
+        .copy-btn {
+            display: block;
+            margin: 18px auto 0 auto;
+            background: var(--turquesa);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 22px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .copy-btn:hover {
+            background: var(--verde-escuro);
+        }
+        .intro-section, .motivador-section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 18px 22px;
+            margin: 32px auto 0 auto;
+            max-width: 650px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            font-size: 1.04em;
+        }
+        .intro-section h2 {
+            color: var(--turquesa);
+            margin-top: 0;
+        }
+        .motivador-section {
+            margin-top: 24px;
+            border-left: 6px solid var(--turquesa);
+            background: #f8fefd;
+        }
+        .motivador-section strong {
+            color: var(--verde-escuro);
+        }
+        .info-section h2 {
+            color: var(--turquesa);
+            margin-top: 0;
+        }
+        .info-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .info-section th, .info-section td {
+            border: 1px solid #e0e0e0;
+            padding: 6px 8px;
+            text-align: left;
+        }
+        .info-section th {
+            background: var(--turquesa);
+            color: #fff;
+        }
+        .info-section tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+        .info-section .obs {
+            font-size: 0.95em;
+            color: #444;
+            margin-bottom: 10px;
+        }
+        .info-section ul {
+            margin-top: 0;
+        }
+        .info-section .excluido {
+            color: #888;
+            font-style: italic;
+        }
+        .intro-section p,
+        .motivador-section p,
+        .info-section p {
+            text-align: justify;
+        }.logo-superior {
+    text-align: center;
+    margin: 12px auto;
+}
+
+.logo-superior img {
+    width: 200px;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+    </style>
+</head>
+<body>
+     <div class="logo-superior">
+    <img src="https://github.com/jessicacarolinesdias/Sicoob-CrediEmbrapa/raw/ec70708d4a27404b086a4a3f26b317983c7f3b19/LOGO-SICOOB-Pura-pos.jpg" alt="Logo Sicoob">
+  </div>
+  
+    <div class="intro-section">
+        <h2>Por que utilizar códigos normativos padronizados?</h2>
+        <p>
+            A padronização dos códigos de normas é um pilar essencial para garantir rastreabilidade, organização e conformidade documental dentro da Cooperativa. Ao seguir uma estrutura lógica e previamente definida — composta por unidade organizacional, macroprocesso, processo e número sequencial —, asseguramos não apenas a integridade dos registros, mas também a facilidade de acesso, consulta e auditoria.
+        </p>
+        <p>
+            Com este gerador, promovemos um ambiente de governança sólida, com transparência e alinhamento institucional, conforme os princípios da Qualidade, Compliance e Gestão Integrada.
+        </p>
+    </div>
+
+    <div class="container">
+<img src="https://github.com/jessicacarolinesdias/Sicoob-CrediEmbrapa/raw/ec70708d4a27404b086a4a3f26b317983c7f3b19/correto_verdadeiro_colorido.jpg"
+style="width: 50px; display: block; margin: 0 auto;">
+        <h1>Gerador de Código de Normas</h1>
+        <form id="codigoForm" autocomplete="off">
+            <label for="unidade">Unidade Organizacional</label>
+            <select id="unidade" required>
+                <option value="">Selecione...</option>
+            </select>
+
+            <label for="macroprocesso">Macroprocesso</label>
+            <input type="text" id="macroprocesso" class="readonly-field" readonly>
+
+            <label for="processoSelect">Processo</label>
+            <select id="processoSelect" required>
+                <option value="">Selecione a unidade primeiro</option>
+            </select>
+
+            <label for="sequencial">Número Sequencial da Norma (3 dígitos)</label>
+            <input type="text" id="sequencial" maxlength="3" pattern="\d{3}" placeholder="Ex: 001" required>
+
+            <div class="output" id="codigoCompleto">XXX.XXX.XXX.XXX</div>
+            <button type="button" class="copy-btn" id="copyBtn">Copiar código</button>
+        </form>
+    </div>
+
+    <div class="motivador-section">
+        <p>
+            <strong>✅ Compliance é compromisso com o certo. Qualidade é o caminho para excelência.</strong>
+        </p>
+        <p>
+            Ao utilizar este gerador de código, você está fortalecendo uma cultura baseada em responsabilidade, clareza e boas práticas. Essa iniciativa reforça o papel de cada colaborador como guardião da integridade documental, promovendo eficiência organizacional e contribuindo para a melhoria contínua da Cooperativa.
+        </p>
+        <p>
+            Vamos juntos manter nosso SGQ forte, nossos processos seguros e nossa reputação íntegra.<br>
+            Fazer o certo é um ato cooperativo.<br>
+            <strong>É o nosso jeito de fazer bem-feito.</strong>
+        </p>
+    </div>
+
+<div class="motivador-section">
+    <p><strong>🔒 Aviso de Uso Restrito</strong></p>
+    <p>
+        Este sistema foi desenvolvido exclusivamente para uso interno do Sicoob CrediEmbrapa.<br>
+        É proibida a reprodução, distribuição, comercialização ou utilização para fins externos, públicos ou comerciais, sem a devida autorização formal.
+    </p>
+    <p>
+        O conteúdo aqui presente é de caráter institucional e protegido por direitos autorais, conforme a Lei nº 9.610/1998 – Lei de Direitos Autorais, bem como pela Norma (2025), para Procedimento Operacional Padrão - POP.
+    </p>
+    <p>
+        De acordo com o item 6.5 – Critérios de Sigilo, da Elaboração de Normas, todos os documentos normativos são considerados reservados e devem ser divulgados somente no ambiente interno, com os devidos cuidados quanto à sua classificação.
+    </p>
+</div>
+
+<div class="motivador-section">
+    <p><strong>📋 Disponibilidade das Documentações</strong></p>
+    <p>
+        Todos os documentos normativos gerados por este sistema são devidamente registrados e controlados por meio da Lista Mestra de Documentos do SGQ – Sistema de Gestão da Qualidade do Sicoob CrediEmbrapa.
+    </p>
+    <ul>
+        <li>Controle de versão e atualização dos documentos</li>
+        <li>Rastreamento e localização rápida de normas e procedimentos</li>
+        <li>Conformidade com os requisitos da ISO 9001:2015 (cláusula 7.5)</li>
+        <li>Respeito à classificação de sigilo de cada documento</li>
+    </ul>
+    <p>
+        Para acessar um documento ou verificar seu status, consulte a versão atual da Lista Mestra disponível no Próton ou com o Setor de Qualidade e Compliance (SQC).
+    </p>
+</div>
+
+<div class="motivador-section">
+    <p><strong>📖 Referência à ISO 9001:2015</strong></p>
+    <p>Este sistema está em conformidade com a ISO 9001:2015, em especial:</p>
+    <ul>
+        <li><strong>Cláusula 7.5 – Informação Documentada:</strong> controle adequado de documentos essenciais ao SGQ;</li>
+        <li><strong>Cláusula 4.4 – Sistema de Gestão da Qualidade:</strong> definição, controle e integração dos processos organizacionais.</li>
+    </ul>
+</div>
+
+<div class="motivador-section">
+    <p><strong>🔗 Lista Mestra de Documentos</strong></p>
+    <p>
+        A verificação e gestão dos documentos normativos gerados devem ser feitas por meio da Lista Mestra institucional:
+    </p>
+    <p>
+        📂 <a href="https://ged.crediembrapa.com.br/proton/manual/listar.php?area=manual" target="_blank">Acessar Lista Mestra de Documentos</a>
+    </p>
+</div>
+
+<div class="motivador-section">
+    <p><strong>🔐 Compromisso com a LGPD</strong></p>
+    <p>
+        Este sistema não coleta, armazena ou trata dados pessoais identificáveis, estando em total conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).
+        Seu uso é exclusivamente funcional, voltado à organização e rastreabilidade das normas internas da Cooperativa.
+    </p>
+</div>
+
+    </div>
+
+    <div class="motivador-section" style="text-align: center; font-weight: bold; font-size: 0.95em;">
+       <p><strong>Elaborado por Jessica Caroline S. Dias</strong></p> 
+    <p>
+       © Sicoob CrediEmbrapa (2025) - Todos os direitos reservados.</p> 
+</div>
+
+    <script>
+        // Todas as unidades e seus processos principais (resumido para exemplo, adicione todos conforme necessário)
+        const unidades = [
+           { codigo: "001", nome: "Assembleia Geral", processos: [
+        { macro: "001", macroNome: "Assembleia Geral", processo: "001", processoNome: "Convocação e realização de Assembleias" }
+    ]},
+    { codigo: "002", nome: "Conselho de Administração", processos: [
+        { macro: "002", macroNome: "Conselho de Administração", processo: "001", processoNome: "Planejamento Estratégico e Diretrizes Institucionais" }
+    ]},
+    { codigo: "003", nome: "Conselho Fiscal", processos: [
+        { macro: "003", macroNome: "Conselho Fiscal", processo: "001", processoNome: "Análise das Demonstrações Contábeis e Financeiras" }
+    ]},
+    { codigo: "004", nome: "Assessoria de Controles Internos e Risco", processos: [
+        { macro: "003", macroNome: "Auditoria e Sindicância", processo: "001", processoNome: "Sindicância" },
+        { macro: "003", macroNome: "Auditoria e Sindicância", processo: "002", processoNome: "Controle e Acompanhamento de Pós-Auditoria" },
+        { macro: "003", macroNome: "Auditoria e Sindicância", processo: "003", processoNome: "Auditoria de Conformidade Administrativa e de Metas Técnicas" },
+        { macro: "003", macroNome: "Auditoria e Sindicância", processo: "004", processoNome: "Avaliação de Risco Operacional" }
+    ]},
+    { codigo: "005", nome: "Assessoria de Qualidade", processos: [
+        { macro: "001", macroNome: "Apoio à Alta Direção", processo: "002", processoNome: "Registro e Controle de Documentos" },
+        { macro: "005", macroNome: "Gestão Estratégica", processo: "004", processoNome: "Desenvolvimento Organizacional" },
+        { macro: "008", macroNome: "Relacionamento com Associados", processo: "007", processoNome: "Não Conformidades, Ações Preventivas e Corretivas" }
+    ]},
+    { codigo: "006", nome: "Diretoria Executiva", processos: [
+        { macro: "001", macroNome: "Apoio à Alta Direção", processo: "001", processoNome: "Secretaria / Formalização de Atos de Gestão" }
+    ]},
+    { codigo: "007", nome: "Presidência", processos: [
+        { macro: "001", macroNome: "Apoio à Alta Direção", processo: "001", processoNome: "Secretaria" },
+        { macro: "001", macroNome: "Apoio à Alta Direção", processo: "002", processoNome: "Registro e Controle de Documentos" },
+        { macro: "001", macroNome: "Apoio à Alta Direção", processo: "003", processoNome: "Ouvidoria" }
+    ]},
+    { codigo: "008", nome: "Diretoria Financeira", processos: [
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "002", processoNome: "Finanças" },
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "004", processoNome: "Execução Orçamentária e Financeira" },
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "005", processoNome: "Contabilidade" },
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "006", processoNome: "Custos" }
+    ]},
+    { codigo: "009", nome: "Diretoria Administrativa", processos: [
+        { macro: "011", macroNome: "Logística e Serviços", processo: "001", processoNome: "Controle Patrimonial e de Material" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "002", processoNome: "Infraestrutura" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "003", processoNome: "Compras" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "004", processoNome: "Almoxarifado" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "005", processoNome: "Contratos" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "006", processoNome: "Avaliação de Fornecedores" }
+    ]},
+    { codigo: "010", nome: "Diretoria Administrativo-Financeira", processos: [
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "002", processoNome: "Finanças" },
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "004", processoNome: "Execução Orçamentária e Financeira" },
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "005", processoNome: "Contabilidade" },
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "006", processoNome: "Custos" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "001", processoNome: "Controle Patrimonial e de Material" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "003", processoNome: "Compras" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "005", processoNome: "Contratos" }
+    ]},
+    { codigo: "011", nome: "Setor de Patrimônio e Logística", processos: [
+        { macro: "011", macroNome: "Logística e Serviços", processo: "001", processoNome: "Controle Patrimonial e de Material" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "002", processoNome: "Infraestrutura" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "003", processoNome: "Compras" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "004", processoNome: "Almoxarifado" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "005", processoNome: "Contratos" },
+        { macro: "011", macroNome: "Logística e Serviços", processo: "006", processoNome: "Avaliação de Fornecedores" }
+    ]},
+    { codigo: "012", nome: "Assessoria de Comunicação", processos: [
+        { macro: "004", macroNome: "Comunicação Social", processo: "001", processoNome: "Eventos Institucionais" },
+        { macro: "004", macroNome: "Comunicação Social", processo: "002", processoNome: "Publicidade e Propaganda" },
+        { macro: "004", macroNome: "Comunicação Social", processo: "003", processoNome: "Atendimento à Imprensa" },
+        { macro: "004", macroNome: "Comunicação Social", processo: "004", processoNome: "Comunicação Interna" },
+        { macro: "004", macroNome: "Comunicação Social", processo: "005", processoNome: "Identidade Visual" },
+        { macro: "004", macroNome: "Comunicação Social", processo: "006", processoNome: "Comunicação em Situação de Crise" }
+    ]},
+    { codigo: "013", nome: "Item excluído: Gerência Financeira", processos: [] },
+    { codigo: "014", nome: "Setor Financeiro", processos: [
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "014.001", processoNome: "Execução Financeira" },
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "014.002", processoNome: "Contas a Pagar e Receber" },
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "014.003", processoNome: "Conciliação Bancária e Fluxo de Caixa" },
+        { macro: "007", macroNome: "Gestão Orçamentária e Financeira", processo: "014.004", processoNome: "Tesouraria e Movimentações Financeiras" }
+    ]},
+    { codigo: "015", nome: "Setor de Tecnologia da Informação", processos: [
+        { macro: "012", macroNome: "Tecnologia da Informação", processo: "001", processoNome: "Sistemas de informação" },
+        { macro: "012", macroNome: "Tecnologia da Informação", processo: "002", processoNome: "Hardware, software e redes de comunicação" },
+        { macro: "012", macroNome: "Tecnologia da Informação", processo: "003", processoNome: "Suporte e Atendimento ao Usuário (Help Desk)" },
+        { macro: "012", macroNome: "Tecnologia da Informação", processo: "004", processoNome: "Gestão de Acessos e Identidades" },
+        { macro: "012", macroNome: "Tecnologia da Informação", processo: "005", processoNome: "Segurança da Informação e Proteção de Dados" },
+        { macro: "012", macroNome: "Tecnologia da Informação", processo: "006", processoNome: "Continuidade de Negócios e Recuperação de Desastres" },
+        { macro: "012", macroNome: "Tecnologia da Informação", processo: "007", processoNome: "Governança, Riscos e Compliance em TI" },
+        { macro: "012", macroNome: "Tecnologia da Informação", processo: "008", processoNome: "Gestão de Projetos e Inovação Tecnológica" },
+        { macro: "012", macroNome: "Tecnologia da Informação", processo: "009", processoNome: "Telefonia e Comunicação Corporativa" },
+        { macro: "012", macroNome: "Tecnologia da Informação", processo: "010", processoNome: "Compras, Contratos e Patrimônio de TI" },
+        { macro: "012", macroNome: "Tecnologia da Informação", processo: "011", processoNome: "Documentação Técnica e Catálogo de Serviços" }
+    ]},
+    { codigo: "016", nome: "Item excluído: Gerência de Administração", processos: [] },
+    { codigo: "017", nome: "Item excluído: Gerência de Negócios", processos: [] },
+    { codigo: "018", nome: "Setor de Crédito", processos: [
+        { macro: "008", macroNome: "Concessão de Crédito", processo: "001", processoNome: "Análise e Concessão de Crédito Pessoal" },
+        { macro: "008", macroNome: "Concessão de Crédito", processo: "002", processoNome: "Crédito Rural" },
+        { macro: "008", macroNome: "Concessão de Crédito", processo: "003", processoNome: "Crédito Comercial" },
+        { macro: "008", macroNome: "Concessão de Crédito", processo: "004", processoNome: "Análise de Risco de Crédito" },
+        { macro: "008", macroNome: "Concessão de Crédito", processo: "005", processoNome: "Controle de Garantias e Formalização Contratual" },
+        { macro: "008", macroNome: "Concessão de Crédito", processo: "006", processoNome: "Cadastro de Clientes e Avaliação de Limite de Crédito" },
+        { macro: "008", macroNome: "Concessão de Crédito", processo: "007", processoNome: "Monitoramento da Carteira de Crédito" }
+    ]},
+    { codigo: "019", nome: "Setor de Recuperação de Crédito", processos: [
+        { macro: "009", macroNome: "Recuperação de Crédito", processo: "001", processoNome: "Cobrança Administrativa" },
+        { macro: "009", macroNome: "Recuperação de Crédito", processo: "002", processoNome: "Cobrança Extrajudicial" },
+        { macro: "009", macroNome: "Recuperação de Crédito", processo: "003", processoNome: "Acordos e Renegociações" },
+        { macro: "009", macroNome: "Recuperação de Crédito", processo: "004", processoNome: "Controle de Inadimplência" },
+        { macro: "009", macroNome: "Recuperação de Crédito", processo: "005", processoNome: "Encaminhamento para Cobrança Judicial e Assessoria Jurídica" }
+    ]},
+    { codigo: "020", nome: "Item excluído: Setor de Monitoramento", processos: [] },
+    { codigo: "021", nome: "Item excluído: Assessoria Técnica", processos: [] },
+    { codigo: "022", nome: "Item excluído: Área de Projetos Especiais", processos: [] },
+    { codigo: "023", nome: "Setor de Gestão de Pessoas", processos: [
+        { macro: "023", macroNome: "Gestão de Pessoas", processo: "001", processoNome: "Recrutamento e Seleção" },
+        { macro: "023", macroNome: "Gestão de Pessoas", processo: "002", processoNome: "Integração de Novos Colaboradores" },
+        { macro: "023", macroNome: "Gestão de Pessoas", processo: "003", processoNome: "Gestão de Desempenho" },
+        { macro: "023", macroNome: "Gestão de Pessoas", processo: "004", processoNome: "Capacitação e Desenvolvimento" },
+        { macro: "023", macroNome: "Gestão de Pessoas", processo: "005", processoNome: "Administração de Pessoal" },
+        { macro: "023", macroNome: "Gestão de Pessoas", processo: "006", processoNome: "Benefícios e Qualidade de Vida" },
+        { macro: "023", macroNome: "Gestão de Pessoas", processo: "007", processoNome: "Gestão de Clima Organizacional" },
+        { macro: "023", macroNome: "Gestão de Pessoas", processo: "008", processoNome: "Segurança e Medicina do Trabalho (SESMT)" },
+        { macro: "023", macroNome: "Gestão de Pessoas", processo: "009", processoNome: "Movimentações Internas e Gestão de Carreiras" }
+    ]},
+    { codigo: "024", nome: "Item excluído: Sem informação no organograma", processos: [] },
+    { codigo: "025", nome: "Item excluído: Sem informação no organograma", processos: [] },
+    { codigo: "026", nome: "Setor de Documentação e Cadastro", processos: [
+        { macro: "026", macroNome: "Documentação e Cadastro", processo: "001", processoNome: "Gerenciamento de Documentação" },
+        { macro: "026", macroNome: "Documentação e Cadastro", processo: "002", processoNome: "Manutenção Cadastral" },
+        { macro: "026", macroNome: "Documentação e Cadastro", processo: "003", processoNome: "Controle de Arquivos e Digitalização" }
+    ]},
+    { codigo: "027", nome: "Setor de Qualidade e Compliance", processos: [
+        { macro: "027", macroNome: "Qualidade e Compliance", processo: "001", processoNome: "Monitoramento de Conformidade Normativa" },
+        { macro: "027", macroNome: "Qualidade e Compliance", processo: "002", processoNome: "Gestão da Qualidade e Melhoria Contínua" },
+        { macro: "027", macroNome: "Qualidade e Compliance", processo: "003", processoNome: "Auditoria Interna de Compliance" },
+        { macro: "027", macroNome: "Qualidade e Compliance", processo: "004", processoNome: "Elaboração e Revisão de Normas e Procedimentos" }
+    ]},
+    { codigo: "028", nome: "Ponto de Atendimento", processos: [
+        { macro: "028", macroNome: "Atendimento ao Cooperado", processo: "001", processoNome: "Atendimento Presencial e Multicanal" },
+        { macro: "028", macroNome: "Atendimento ao Cooperado", processo: "002", processoNome: "Abertura e Manutenção de Contas" },
+        { macro: "028", macroNome: "Atendimento ao Cooperado", processo: "003", processoNome: "Processamento de Operações Financeiras" },
+        { macro: "028", macroNome: "Atendimento ao Cooperado", processo: "004", processoNome: "Orientação e Encaminhamento de Produtos e Serviços" },
+        { macro: "028", macroNome: "Atendimento ao Cooperado", processo: "005", processoNome: "Apoio em Processos de Cobrança e Renegociação" }
+            ]},
+            // Adicione as demais unidades e processos conforme o texto base
+        ];
+
+        // Preenche o select de unidades
+        const unidadeSelect = document.getElementById('unidade');
+        unidades.forEach(u => {
+            const opt = document.createElement('option');
+            opt.value = u.codigo;
+            opt.textContent = u.codigo + ' - ' + u.nome;
+            unidadeSelect.appendChild(opt);
+        });
+
+        // Campos do formulário
+        const macroInput = document.getElementById('macroprocesso');
+        const processoSelect = document.getElementById('processoSelect');
+        const sequencialInput = document.getElementById('sequencial');
+        const codigoCompleto = document.getElementById('codigoCompleto');
+        const copyBtn = document.getElementById('copyBtn');
+
+        // Quando muda a unidade, preenche os processos e macroprocesso
+        unidadeSelect.addEventListener('change', function() {
+            const unidade = unidades.find(u => u.codigo === unidadeSelect.value);
+            processoSelect.innerHTML = '';
+            if (unidade && unidade.processos.length > 0) {
+                unidade.processos.forEach((proc, idx) => {
+                    const opt = document.createElement('option');
+                    opt.value = idx;
+                    opt.textContent = proc.processo.padStart(3, '0') + ' - ' + proc.processoNome;
+                    processoSelect.appendChild(opt);
+                });
+                processoSelect.selectedIndex = 0;
+                macroInput.value = unidade.processos[0].macro.padStart(3, '0') + ' - ' + unidade.processos[0].macroNome;
+            } else {
+                macroInput.value = '';
+                const opt = document.createElement('option');
+                opt.value = '';
+                opt.textContent = 'Nenhum processo disponível';
+                processoSelect.appendChild(opt);
+            }
+            atualizarCodigo();
+        });
+
+        // Quando muda o processo, atualiza macroprocesso
+        processoSelect.addEventListener('change', function() {
+            const unidade = unidades.find(u => u.codigo === unidadeSelect.value);
+            const idx = processoSelect.value;
+            if (unidade && unidade.processos[idx]) {
+                macroInput.value = unidade.processos[idx].macro.padStart(3, '0') + ' - ' + unidade.processos[idx].macroNome;
+            } else {
+                macroInput.value = '';
+            }
+            atualizarCodigo();
+        });
+
+        function atualizarCodigo() {
+            const unidade = unidadeSelect.value.padStart(3, '0');
+            const unidadeObj = unidades.find(u => u.codigo === unidadeSelect.value);
+            let macro = '', processo = '';
+            const idx = processoSelect.value;
+            if (unidadeObj && unidadeObj.processos[idx]) {
+                macro = unidadeObj.processos[idx].macro.padStart(3, '0');
+                processo = unidadeObj.processos[idx].processo.padStart(3, '0');
+            }
+            const sequencial = sequencialInput.value.padStart(3, '0');
+            if (unidade && macro && processo && sequencial && sequencial.length === 3) {
+                codigoCompleto.textContent = `${unidade}.${macro}.${processo}.${sequencial}`;
+            } else {
+                codigoCompleto.textContent = 'XXX.XXX.XXX.XXX';
+            }
+        }
+
+        sequencialInput.addEventListener('input', atualizarCodigo);
+
+        // Copiar código ao clicar no botão
+        copyBtn.addEventListener('click', function() {
+            const code = codigoCompleto.textContent;
+            if (code && code !== 'XXX.XXX.XXX.XXX') {
+                navigator.clipboard.writeText(code);
+                copyBtn.textContent = 'Copiado!';
+                setTimeout(() => { copyBtn.textContent = 'Copiar código'; }, 1200);
+            }
+        });
+
+        // Recolher/expandir área de informações
+        const toggleInfoBtn = document.getElementById('toggleInfoBtn');
+        const infoSection = document.getElementById('infoSection');
+        let infoVisible = true;
+        toggleInfoBtn.addEventListener('click', function() {
+            infoVisible = !infoVisible;
+            if (infoVisible) {
+                infoSection.classList.remove('collapsed');
+                toggleInfoBtn.textContent = 'Ocultar informações';
+            } else {
+                infoSection.classList.add('collapsed');
+                toggleInfoBtn.textContent = 'Mostrar informações';
+            }
+        });
+    </script>
+    <style>
+.teams-btn-fixed {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    background-color: #007f3f;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-weight: bold;
+    font-size: 0.98em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s, box-shadow 0.2s;
+    min-width: 44px;
+}
+.teams-btn-fixed:hover {
+    background-color: #005e2e;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+@media (max-width: 600px) {
+    .teams-btn-fixed {
+        font-size: 0.92em;
+        padding: 7px 10px;
+        right: 8px;
+        bottom: 8px;
+    }
+}
+</style>
+
+</a>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68af5066e052891921d8351e/1j3md441v';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+  </script>
+</body>
