@@ -17,11 +17,11 @@ O sistema atua como um **gerador de códigos e padrões normativos**, facilitand
 ---
 
 ## 🧠 Tecnologias e Ferramentas Utilizadas
-- **ChatGPT (OpenAI):** motor de IA para automação textual e suporte inteligente.  
-- **Microsoft Excel / Power BI:** integração de dados, dashboards e indicadores de qualidade.  
-- **SharePoint:** armazenamento, versionamento e controle de documentos institucionais.  
-- **GitHub:** versionamento, documentação e colaboração entre equipes.  
-- **Normas ISO 9001, 14001 e 27001:** base conceitual e metodológica de qualidade e compliance.  
+- **ChatGPT (OpenAI)** – motor de IA para automação textual e suporte inteligente.  
+- **Microsoft Excel / Power BI** – integração de dados, dashboards e indicadores de qualidade.  
+- **SharePoint** – armazenamento, versionamento e controle de documentos institucionais.  
+- **GitHub** – versionamento, documentação e colaboração entre equipes.  
+- **Normas ISO 9001, 14001 e 27001** – base conceitual e metodológica de qualidade e compliance.  
 
 ---
 
@@ -32,15 +32,16 @@ O sistema atua como um **gerador de códigos e padrões normativos**, facilitand
 ├── padroes-01.jpg # Diretrizes e padrões de design
 ├── correto_verdadeiro_colorido.jpg # Material de apoio
 ├── README.md # Documento de referência do projeto
+├── index.html # Página inicial do projeto
 
 
 ---
 
 ## 🧩 Componentes do Sistema
-1. **Gerador de Códigos de Normas:** automatiza a criação dos códigos institucionais (ex: IT, POP, PTB).  
-2. **Matriz de Controle de Documentos:** permite acompanhar o status e a validade de cada norma.  
-3. **Painel de Indicadores (Power BI):** apresenta métricas de conformidade e desempenho.  
-4. **Assistente de Compliance (IA):** realiza verificações textuais e padroniza descrições normativas.  
+1. **Gerador de Códigos de Normas** – automatiza a criação dos códigos institucionais (ex: IT, POP, PTB).  
+2. **Matriz de Controle de Documentos** – permite acompanhar o status e a validade de cada norma.  
+3. **Painel de Indicadores (Power BI)** – apresenta métricas de conformidade e desempenho.  
+4. **Assistente de Compliance (IA)** – realiza verificações textuais e padroniza descrições normativas.  
 
 ---
 
@@ -52,7 +53,34 @@ O sistema atua como um **gerador de códigos e padrões normativos**, facilitand
 
 ---
 
-## 🧭 Como Utilizar
-1. Clone este repositório:  
-   ```bash
-   git clone https://github.com/jessicacarolinesdias/Sicoob-CrediEmbrapa.git
+## 📊 Status do Projeto
+🚀 **Versão atual:** Em desenvolvimento contínuo  
+🧩 **Foco:** Automação documental e integração com SGQ  
+💼 **Ambiente de aplicação:** Sicoob CrediEmbrapa  
+
+---
+
+## 📜 Licença
+Este projeto está licenciado sob a **Licença MIT** – você é livre para usar, copiar e modificar, desde que mantenha os créditos originais.
+
+---
+
+## ✨ Autoria e Responsabilidade Técnica
+**Desenvolvido por:**  
+👩‍💻 *Jéssica Caroline da Silva Dias*  
+💼 Escritora, Especialista em Qualidade & Compliance  
+📍 Sicoob CrediEmbrapa – Sistema de Gestão da Qualidade  
+
+**Orientação acadêmica:**  
+Faculdade Gran – Projeto Integrador (Fase 2 – Fullstack)  
+
+---
+
+## 📫 Contato
+- 🌐 [LinkedIn](https://www.linkedin.com/in/jessicacarolinedias)  
+- 📧 writerannelisebishop@gmail.com  
+- 🏛️ [Sicoob CrediEmbrapa](https://www.sicoobcrediembrapa.coop.br/)
+
+---
+
+> _“A tecnologia é a ponte entre a qualidade e o futuro — e cada processo aprimorado é um ato de sustentabilidade.”_ 🌿
