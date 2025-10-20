@@ -26,3 +26,33 @@ O sistema atua como um **gerador de códigos e padrões normativos**, facilitand
 ---
 
 ## ⚙️ Estrutura do Repositório
+/Sicoob-CrediEmbrapa
+│
+├── LOGO-SICOOB-Pura-ap01-TRACO-neg.jpg # Identidade visual
+├── padroes-01.jpg # Diretrizes e padrões de design
+├── correto_verdadeiro_colorido.jpg # Material de apoio
+├── README.md # Documento de referência do projeto
+
+
+---
+
+## 🧩 Componentes do Sistema
+1. **Gerador de Códigos de Normas:** automatiza a criação dos códigos institucionais (ex: IT, POP, PTB).  
+2. **Matriz de Controle de Documentos:** permite acompanhar o status e a validade de cada norma.  
+3. **Painel de Indicadores (Power BI):** apresenta métricas de conformidade e desempenho.  
+4. **Assistente de Compliance (IA):** realiza verificações textuais e padroniza descrições normativas.  
+
+---
+
+## 🌍 Impactos e Benefícios
+- Diminuição de retrabalho e inconsistências documentais.  
+- Aumento da rastreabilidade e da segurança da informação.  
+- Fortalecimento da cultura de qualidade e melhoria contínua.  
+- Contribuição direta ao **ODS 12 – Consumo e Produção Sustentáveis**, da ONU.  
+
+---
+
+## 🧭 Como Utilizar
+1. Clone este repositório:  
+   ```bash
+   git clone https://github.com/jessicacarolinesdias/Sicoob-CrediEmbrapa.git
